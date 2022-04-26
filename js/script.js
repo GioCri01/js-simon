@@ -8,19 +8,48 @@ Dopo che sono stati inseriti i 5 numeri, il software dice quanti e quali dei num
     const container = document.querySelector("main");
     document.getElementById("play").addEventListener("click", play);
     
+    
+    let arrNumeriEstratti = [];
+    let time = 6;
+    let myTimer;
+   
+            
+    
+    
+    
+    
+    
+    
 
 
 
- function play() {
+function play() {
     reset();
     estrazioneNumeri();
-    setTimeout(userNumber,3000);
+    myTimer = setInterval(function(){
+         time--;
+         if(time === 0){
+            clearInterval(myTimer);
+         } 
+         
+         
+         container.innerHTML= time;
+           
+         
+          },1000);
+          
+   
+    setTimeout(userNumber,6000);
+    fineGioco();
+    
+    
     
     
      
 
      
- }
+}
+console.log(arrNumeriEstratti);
 
 
 
@@ -33,12 +62,13 @@ Dopo che sono stati inseriti i 5 numeri, il software dice quanti e quali dei num
 
 
   function estrazioneNumeri() {
-    const arrNumeriEstratti = [];
+    
+    let numeriEstratti;
     for (let i = 1; i <= 5; i++) {
        
-        const numeriEstratti  = getRandomNumber(1, 99); 
+        numeriEstratti  = getRandomNumber(1, 99); 
         arrNumeriEstratti.push(numeriEstratti);
-         const quadrato = document.createElement("div");
+        const quadrato = document.createElement("div");
         quadrato.classList = ("box-number");
         quadrato.innerHTML = `${numeriEstratti}`;
         container.append(quadrato);
@@ -48,7 +78,7 @@ Dopo che sono stati inseriti i 5 numeri, il software dice quanti e quali dei num
 
       }    
         
-      console.log(arrNumeriEstratti);
+      
       return arrNumeriEstratti;
         
 
@@ -66,22 +96,28 @@ Dopo che sono stati inseriti i 5 numeri, il software dice quanti e quali dei num
 }
 
 
-function userNumber(quadrato) {
+function userNumber() {
+    
     let numeroUtente
-    const arrNumeriInseriti = [];
+    
     for (let i = 1; i <= 5; i++) {
         
          numeroUtente = parseInt(prompt("Inserisci Numero"));
-         arrNumeriInseriti.push(numeroUtente);
-            console.log(numeroUtente);
+         
         
+         
+            
         
+        console.log(numeroUtente);
         
     }
     
-    controlloNumeri();
-    console.log(arrNumeriInseriti);
-    return arrNumeriInseriti;
+   
+    
+    
+    
+    
+    
     
 
     
@@ -90,12 +126,32 @@ function userNumber(quadrato) {
     
 }
 
-function controlloNumeri(arrNumeriEstratti,arrNumeriInseriti) {
-    for (let i = 0; i < arrNumeriEstratti.l; i++) {
-       
+
+function fineGioco(userNumber) {
+    let contatore = 0;
+    for (let i = 0; i < arrNumeriEstratti.length; i++) {
+        if(arrNumeriEstratti.includes(userNumber)){
+            contatore++;
+            console.log(contatore);
+        }
+        
         
     }
     
-    
-    
 }
+
+
+    
+
+
+    
+
+
+
+
+
+
+
+
+
+
